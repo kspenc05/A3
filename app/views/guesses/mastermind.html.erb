@@ -1,0 +1,54 @@
+<html>
+    <header>
+        <title>nope</title>
+    </header>
+    <body>
+        <%= check_choice.to_s %>
+        
+        <%= form_for :Guess do |f| %>
+            Peg 1: <%= f.select :choice1, ['red', 'green', 'blue', 'yellow', 'cyan', 'magenta'] %><br />
+            Peg 2: <%= f.select :choice2, ['red', 'green', 'blue', 'yellow', 'cyan', 'magenta'] %><br />
+            Peg 3: <%= f.select :choice3, ['red', 'green', 'blue', 'yellow', 'cyan', 'magenta'] %><br />
+            Peg 4: <%= f.select :choice4, ['red', 'green', 'blue', 'yellow', 'cyan', 'magenta'] %><br />
+            <%= f.submit %>
+        <% end %>
+    
+        <table>
+            <tr>
+            <th>Name</th>
+            <th>Choice1</th>
+            <th>Choice2</th>
+            <th>Choice3</th>
+            <th>Choice4</th>
+            <th>Choice5</th>
+            </tr>
+            <% i = 0 %>
+            <% Guess.all.each do |g| %>
+                <tr>
+                    <% i = i + 1%>
+                    <td><%= "Guess: #" + i.to_s%></td>
+                    <td><%= val_str(g.c1) %></td>
+                    <td><%= val_str(g.c2) %></td>
+                    <td><%= val_str(g.c3) %></td>
+                    <td><%= val_str(g.c4) %></td>
+                </tr>
+            <% end %>
+        </table>
+        
+        <div id = "answerbox">
+            <h4>
+            </h4>
+        </div>
+        # => <a href="/">Home</a>
+    </body>
+    
+    <script>
+        function send_data()
+        {
+            document.getElementById("choice1").submit();
+            document.getElementById("choice2").submit();
+            document.getElementById("choice3").submit();
+            document.getElementById("choice4").submit();
+        }
+    </script>
+</html>
